@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fanlun.dao.ScoreDao">
+    <resultMap id="BeanResultMap" type="com.fanlun.bean.Score">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="sno" property="sno" jdbcType="INTEGER"/>
+        <result column="cno" property="cno" jdbcType="INTEGER"/>
+        <result column="tno" property="tno" jdbcType="INTEGER"/>
+        <result column="year" property="year" jdbcType="INTEGER"/>
+        <result column="semester" property="semester" jdbcType="VARCHAR"/>
+        <result column="chapter" property="chapter" jdbcType="INTEGER"/>
+        <result column="grade" property="grade" jdbcType="FLOAT"/>
+    </resultMap>
+
+    <sql id="All_Column">
+        id, sno, cno, tno, year, semester, chapter, grade
+    </sql>
+
+    <update id="scoreModify" parameterType="com.fanlun.bean.Score">
+        UPDATE sg
+        SET grade = #{grade}
+        <trim prefix="where" prefixOverrides="AND |OR">
+            <if test="sno != null">
+                AND sno =#{sno}
+            </if>
+            <if test="year != null">
+                AND year = #{year}
+            </if>
+            <if test="semester != null">
+                AND semester LIKE CONCAT(CONCAT('%',#{semester}),'%')
+            </if>
+            <if test="chapter != null">
+                AND chapter = #{chapter}
+            </if>
+            <if test="cno != null">
+                AND cno = #{cno}
+            </if>
+            <if test="tno != null">
+                AND tno = #{tno}
+            </if>
+        </trim>
+    </update>
+
+    <delete id="scoreDelete" parameterType="com.fanlun.bean.Score">
+        DELETE FROM
+        sg
+        WHERE sno=#{sno}
+        AND tno=#{tno} AND year=#{year} AND chapter=#{chapter} AND cno=#{cno}
+        AND semester=#{semester} AND grade=#{grade}
+    </delete>
+
+
+    <insert id="scoreListAdd" parameterType="java.util.List">
+        INSERT INTO sg(sno, tno, year, cno, semester, chapter, grade)
+        VALUES
+        <foreach collection="scores" item="score" separator=",">
+            (#{score.sno}, #{score.tno}, #{score.year}, #{score.cno}, #{score.semester}, #{score.chapter}, #{score.grade})
+        </foreach>
+    </insert>
+    
+    
+    
+    <select id="getListScore" resultMap="BeanResultMap" parameterType="com.fanlun.bean.Score">
+        SELECT
+        <include refid="All_Column"/>
+        FROM sg
+        <trim prefix="where" prefixOverrides="AND |OR ">
+            <if test="sno != null">
+                AND sno LIKE CONCAT(CONCAT('%',#{sno}),'%')
+            </if>
+            <if test="year != null">
+                AND year = #{year}
+            </if>
+            <if test="semester != null">
+                AND semester LIKE CONCAT(CONCAT('%',#{semester}),'%')
+            </if>
+            <if test="chapter != null">
+                AND chapter = #{chapter}
+            </if>
+            <if test="cno != null">
+                AND cno = #{cno}
+            </if>
+            <if test="tno != null">
+                AND tno = #{tno}
+            </if>
+        </trim>
+    </select>
+
+    <select id="scoreCount" resultType="java.lang.Integer" parameterType="com.fanlun.bean.Score">
+        SELECT count(*) as total FROM sg
+        <trim prefix="where" prefixOverrides="AND |OR ">
+            <if test="sno != null">
+                AND sno LIKE CONCAT(CONCAT('%',#{sno}),'%')
+            </if>
+            <if test="year != null">
+                AND year = #{year}
+            </if>
+            <if test="semester != null">
+                AND semester LIKE CONCAT(CONCAT('%',#{semester}),'%')
+            </if>
+            <if test="chapter != null">
+                AND chapter = #{chapter}
+            </if>
+            <if test="cno != null">
+                AND cno = #{cno}
+            </if>
+            <if test="tno != null">
+                AND tno = #{tno}
+            </if>
+        </trim>
+    </select>
+</mapper>

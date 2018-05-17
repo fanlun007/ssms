@@ -15,7 +15,7 @@ public class XueqiController {
     @Autowired
     private XueqiService xueqiService;
 
-    @RequestMapping("teacher/queryXueqiServlet")
+    @RequestMapping("*/queryXueqiServlet")
     @ResponseBody
     public List<Map<String, Object>> getAllDanyuan() {
         return xueqiService.getSemester();

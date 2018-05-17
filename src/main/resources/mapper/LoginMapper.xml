@@ -6,4 +6,16 @@
         FROM t
         WHERE tno = #{tno} AND password = #{password}
     </select>
+
+    <select id="hasStudent" resultType="com.fanlun.bean.Student">
+        SELECT sno,sn,enroll,gender,password
+        FROM s
+        WHERE sno = #{sno} AND password = #{password}
+    </select>
+
+    <select id="hasManager" resultType="com.fanlun.bean.Teacher">
+        SELECT tno,password
+        FROM t
+        WHERE tno = #{tno} AND password = #{password} AND isadmin = 1
+    </select>
 </mapper>

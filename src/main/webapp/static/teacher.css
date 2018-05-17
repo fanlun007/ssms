@@ -1,0 +1,82 @@
+table{
+	 border: 2px solid black;
+}
+
+tr{
+     display:block;
+     border-bottom:1px solid gray;
+     padding: 10px;
+     margin-bottom:10px;
+
+}
+td{
+     display:inline-block;
+     margin-left:10px;
+     width:240px;
+	 font-size:20px;
+}
+input{
+     height:25px;
+     width:120px;
+     border:none;
+     font-size:18px;
+}
+
+.NewWidth1{
+	width:500px;
+}
+
+.NewWidth2{
+	width:600px;
+	height:40px;
+}
+
+#center{
+	 width:1000px;
+	 margin:0px auto;
+}
+
+#title{
+	 display:block;
+     width:750px;
+     text-align:center;
+     font-size:32px;
+}
+.inputlong{
+	 height:30px;
+     width:380px;
+     border:none;
+	 font-size:18px;
+}
+tr:last-child{
+     border-bottom:none;
+}
+#btn{
+	 position:relative; 
+	 width:200px;
+	 cursor: pointer;
+	 
+}
+.btn1{
+	  position:absolute;
+	  margin-top:30px;
+	  margin-left:180px;
+	  height:40px;
+	  border-radius:20px;
+	  border: 3px double #aaa; 
+	  background:#2f435e;  
+      color:#f2f2f2; 
+	  cursor: pointer;
+}
+.btn2{
+	  position:absolute;
+	  text-align:center;
+	  margin-top:30px;
+	  margin-left:480px;
+	  height:40px;
+	  border-radius:20px;
+	  border: 3px double #aaa; 
+	  background:#2f435e;  
+      color:#f2f2f2; 
+	  cursor: pointer;
+}

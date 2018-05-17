@@ -38,6 +38,7 @@ public class LoginController {
                 request.getSession().setAttribute("student", student);
                 return "main_student";
             } else {
+                System.out.println("error");
                 request.setAttribute("error", "用户名或密码不正确");
                 return "forward:/index.jsp";
             }
@@ -53,6 +54,18 @@ public class LoginController {
                 return "forward:/index.jsp";
             }
         }
+
+        if (user.equals("admin") && username != null && password != null) {
+            Teacher teacher = loginService.hasManager(username, password);
+            if (teacher != null) {
+                request.getSession().setAttribute("teacher", teacher);
+                return "main_manager";
+            } else {
+                request.setAttribute("error", "用户名或密码不正确");
+                return "forward:/index.jsp";
+            }
+        }
+
         return "redirect:/index.jsp";
     }
 

@@ -15,7 +15,7 @@ public class DanyuanController {
     @Autowired
     private DanyuanService danyuanService;
 
-    @RequestMapping("teacher/queryDanyuanServlet")
+    @RequestMapping("*/queryDanyuanServlet")
     @ResponseBody
     public List<Map<String, Object>> getAllDanyuan(){
         return danyuanService.queryKecheng();

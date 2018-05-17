@@ -46,6 +46,27 @@ public class testController {
         return "teacher/cjcx";
     }
 
+    @RequestMapping("student/cjcx_student")
+    public String testcjcxstudent() { return "student/cjcx_student"; }
+
+    @RequestMapping("mgr/TaccountManager")
+    public String testTaccount() {
+        System.out.println("manager/TaccountManager");
+        return "mgr/TaccountManager";
+    }
+
+    @RequestMapping("mgr/SaccountManager")
+    public String testSaccount() {
+        System.out.println("manager/SaccountManager");
+        return "mgr/SaccountManager";
+    }
+
+    @RequestMapping("mgr/TinfoManager")
+    public String testTinfo() { return "mgr/TinfoManager"; }
+
+    @RequestMapping("mgr/SinfoManager")
+    public String testSinfo() { return "mgr/SinfoManager"; }
+
 
     @RequestMapping("testjson")
     public String testjson() {
@@ -57,10 +78,27 @@ public class testController {
 
     @RequestMapping("teacher/scoreServlet")
     @ResponseBody
-    public Map testgetAllScore(Score score, HttpServletRequest request) {
+    public Map teacherGetAllScore(Score score, HttpServletRequest request) {
         System.out.println(score);
         String page1 = request.getParameter("page");
         String rows = request.getParameter("rows");
+
+        Page page = new Page(Integer.parseInt(page1), Integer.parseInt(rows));
+        List<Score> scores = scoreService.getListScore(score);
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("rows", scores);
+        result.put("total", scoreService.scoreCount(score));
+
+        return result;
+    }
+
+    @RequestMapping("*/stuGetScoreServlet")
+    @ResponseBody
+    public Map studentGetAllScore(Score score, HttpServletRequest request) {
+        System.out.println(score);
+        String page1 = request.getParameter("page");
+        String rows = request.getParameter("rows");
+
 
         Page page = new Page(Integer.parseInt(page1), Integer.parseInt(rows));
         List<Score> scores = scoreService.getListScore(score);

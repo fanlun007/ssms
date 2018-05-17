@@ -15,14 +15,21 @@ public class LoginService {
 
     public Student hasStudent(Integer username, String password){
 
+        Student student = loginDao.hasStudent(username,password);
 
-
-        return null;
+        return student;
     }
 
     public Teacher hasTeacher(Integer username, String password){
 
         Teacher teacher = loginDao.hasTeacher(username, password);
+
+        return teacher;
+    }
+
+    public Teacher hasManager(Integer username, String password){
+
+        Teacher teacher = loginDao.hasManager(username, password);
 
         return teacher;
     }

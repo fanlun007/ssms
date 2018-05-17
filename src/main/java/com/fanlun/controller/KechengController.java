@@ -15,7 +15,7 @@ public class KechengController {
     @Autowired
     private KechengService kechengService;
 
-    @RequestMapping("teacher/queryKechengServlet")
+    @RequestMapping("*/queryKechengServlet")
     @ResponseBody
     public List<Map<String, Object>> getAllKecheng(){
 

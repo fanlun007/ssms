@@ -16,7 +16,7 @@ public class NianfenController {
     @Autowired
     private NianfenService nianfenService;
 
-    @RequestMapping("teacher/queryNianfenServlet")
+    @RequestMapping("*/queryNianfenServlet")
     @ResponseBody
     public List<Map<String, Object>> getAllKecheng(){
 

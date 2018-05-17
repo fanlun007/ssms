@@ -41,6 +41,7 @@ public class ScoreController {
 
         Map<String, Object> result = new HashMap<String, Object>();
         int saveNums = 0;
+        //保存到数据库
         saveNums = scoreService.scoreModify(score);
 
         if (saveNums > 0) {

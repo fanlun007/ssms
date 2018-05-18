@@ -4,6 +4,7 @@ package com.fanlun.controller;
 import com.fanlun.bean.Course;
 import com.fanlun.bean.Page;
 import com.fanlun.bean.Score;
+import com.fanlun.bean.Teacher;
 import com.fanlun.service.KechengService;
 import com.fanlun.service.ScoreService;
 import com.fanlun.service.TestJsonService;
@@ -130,7 +131,21 @@ public class testController {
     @RequestMapping("teacher/teacherInfo")
     public ModelAndView testInfo(){
         ModelAndView mv = new ModelAndView("teacher/teacherInfo");
-        logger.info("testTeacherInfo");
+        Teacher teacher = new Teacher();
+        teacher.setPassword("123456");
+        teacher.setSubject(2);
+        teacher.setTn("里斯");
+        teacher.setTno(20150909);
+        teacher.setAddress("HK");
+        teacher.setDocType("身份证");
+        teacher.setIdNum("8889988777665");
+        teacher.setIsRet("否");
+        teacher.setMobille("13898836520");
+        teacher.setRmarks("没有备注");
+
+        mv.addObject("teacher", teacher);
+
+        logger.info("testTeacherInfo{}", teacher);
         return mv;
     }
 }

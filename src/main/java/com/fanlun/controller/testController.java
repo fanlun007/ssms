@@ -7,6 +7,8 @@ import com.fanlun.bean.Score;
 import com.fanlun.service.KechengService;
 import com.fanlun.service.ScoreService;
 import com.fanlun.service.TestJsonService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,7 @@ import java.util.Map;
 
 @Controller
 public class testController {
+    Logger logger = LoggerFactory.getLogger(testController.class);
 
     @Autowired
     private TestJsonService testJsonService;
@@ -120,6 +123,14 @@ public class testController {
         mv.addObject("courseLists", courseLists);
         System.out.println("rootPath:" + rootPath);
 
+        return mv;
+    }
+
+    //测试freemarker
+    @RequestMapping("teacher/teacherInfo")
+    public ModelAndView testInfo(){
+        ModelAndView mv = new ModelAndView("teacher/teacherInfo");
+        logger.info("testTeacherInfo");
         return mv;
     }
 }

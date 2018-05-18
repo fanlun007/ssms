@@ -16,6 +16,9 @@
     <a href="/getAllScore">getAllScore</a>
 
     <br/>
+    <a href="/teacher/teacherInfo">teacherInfo</a>
+
+    <br/>
     <br/>
 
     <form id="import" action="import.go" method="post" enctype="multipart/form-data">

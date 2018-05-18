@@ -26,7 +26,7 @@
                 text:"个人信息查询",
                 attributes:{
                     //这里设置连接
-                    url:"/StudentInfo/cjcx.jsp"
+                    url:"/teacher/teacherInfo"
                 }
             }]
         }];
